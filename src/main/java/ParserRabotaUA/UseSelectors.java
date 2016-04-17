@@ -26,7 +26,7 @@ public class UseSelectors {
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String URL = "http://rabota.ua/jobsearch/vacancy_list?regionId=1&keyWords=";
-        for (int i = 1; i == i; i++) {
+        for (int i = 1; true; i++) {
             try {
 // Connect and read a page
                 doc = Jsoup.connect(URL + keyWords + "&period=2&lastdate=" + sdf.format(currentDate) + "&pg=" + i).get();
@@ -37,8 +37,8 @@ public class UseSelectors {
                     System.out.println("Total number of vacancies: " + countVacancy);
                     break;
                 }
-
                 countVacancy += doc.body().select(".t").size();
+
 // Print out the parsed info
                 for (int j = 0; j < doc.body().select(".t").size(); j++) {
                     System.out.println(doc.body().select(".t").get(j).text()); //name of vacancy
