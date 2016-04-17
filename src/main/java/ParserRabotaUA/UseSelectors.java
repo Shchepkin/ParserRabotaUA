@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UseSelectors {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException{
 //---------------------------------------------------------------------
         String keyWords = "QA%2c+" +
                 "Automated+testing%2c+" +
@@ -42,7 +42,8 @@ public class UseSelectors {
 // Print out the parsed info
                 for (int j = 0; j < doc.body().select(".t").size(); j++) {
                     System.out.println(doc.body().select(".t").get(j).text()); //name of vacancy
-                    System.out.println(doc.body().select(".s").get(j).text()); //name of company
+                    System.out.println(doc.body().select(".s").get(j).text().substring(0, doc.body().select(".s").get(j).text().length()-21)); //name of company
+                    System.out.println(doc.body().select(".dt").get(j).text()); //when added
                     System.out.println("http://rabota.ua" + doc.body().select(".t").get(j).attr("href")); //link
                     System.out.println();
                 }
